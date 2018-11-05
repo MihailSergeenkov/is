@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import products from '~/constants/Products';
 import Image from '~/src/Image';
+import TextBox from '~/src/TextBox';
 
 ReactDOM.render(
-  <Image src={products[0]['imageUrl']} width="150" height="150" alt={products[0]['title']} />,
+  <TextBox text="Очень вкусные апельсины" />,
   document.getElementById('app')
 );
