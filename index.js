@@ -1,11 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import products from '~/constants/Products';
-import Image from '~/src/Image';
-import TextBox from '~/src/TextBox';
-import Price from '~/src/Price';
+import ProductCard from '~/src/ProductCard';
 
 ReactDOM.render(
-  <Price price={products[0]['price']} />,
-  document.getElementById('app')
+  <ProductCard product={products[0]} />,
+  document.getElementById('app1')
+);
+ReactDOM.render(
+  <ProductCard product={products[1]} />,
+  document.getElementById('app2')
+);
+ReactDOM.render(
+  <ProductCard product={products[2]} />,
+  document.getElementById('app3')
 );
