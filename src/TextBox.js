@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TextBox extends Component {
   constructor(props) {
@@ -13,5 +14,9 @@ class TextBox extends Component {
     );
   }
 }
+
+TextBox.propTypes = {
+  text: PropTypes.string.isRequired
+};
 
 export default TextBox;
