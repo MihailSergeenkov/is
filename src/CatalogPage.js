@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import Catalog from '~/src/Catalog';
 import products from '~/constants/Products';
+import basketContext from '~/basketContext';
 
 class CatalogPage extends Component {
   constructor(props) {
     super(props);
-    this.state = { products: [] }
+
+    this.state = {
+      products: [],
+      basket: []
+    };
+
+    this.addProduct = (product) => {
+      return () => {
+        this.setState((prevState) => ({
+          basket: [...prevState.basket, product]
+        }));
+      };
+    };
   }
 
   componentDidMount() {
@@ -13,7 +26,11 @@ class CatalogPage extends Component {
   }
 
   render() {
-    return <Catalog products={this.state.products}/>;
+    return (
+      <basketContext.Provider value={{ basket: this.state.basket, addProduct: this.addProduct }} >
+        <Catalog products={this.state.products}/>
+      </basketContext.Provider>
+    );
   }
 }
 

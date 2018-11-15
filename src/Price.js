@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Price extends Component {
   constructor(props) {
@@ -9,9 +10,13 @@ class Price extends Component {
     const { price } = this.props;
 
     return (
-      <span>{price}</span>
+      <span>{price} руб.</span>
     );
   }
 }
+
+Price.propTypes = {
+  price: PropTypes.number.isRequired
+};
 
 export default Price;
