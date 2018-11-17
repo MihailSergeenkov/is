@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ProductCard from '~/src/ProductCard';
 import BasketButton from '~/src/BasketButton';
-import basketContext from '~/basketContext';
 
 class Catalog extends Component {
   constructor(props) {
@@ -13,24 +12,18 @@ class Catalog extends Component {
     const { products } = this.props;
 
     return (
-      <basketContext.Consumer>
-        {
-          ({ basket }) => (
-            <div className="container">
-              <BasketButton products={basket} />
-              <div className="row">
-                {
-                  products.map((product) => (
-                    <div className="col s4" key={product['id']}>
-                      <ProductCard product={product} />
-                    </div>
-                  ))
-                }
+      <div className="container">
+        <BasketButton />
+        <div className="row">
+          {
+            products.map((product) => (
+              <div className="col s4" key={product['id']}>
+                <ProductCard product={product} />
               </div>
-            </div>
-          )
-        }
-      </basketContext.Consumer>
+            ))
+          }
+        </div>
+      </div>
     );
   }
 }
