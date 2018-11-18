@@ -20,6 +20,7 @@ class ProductCard extends Component {
 
   dragStart(e) {
     e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('product', this.props.product['id']);
     e.dataTransfer.setDragImage(e.target, 5, 5);
     return true;
   }

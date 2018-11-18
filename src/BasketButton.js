@@ -5,7 +5,6 @@ class BasketButton extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { products: 0 };
     this.dragEnter = this.dragEnter.bind(this);
     this.dragOver = this.dragOver.bind(this);
     this.drop = this.drop.bind(this);
@@ -20,28 +19,27 @@ class BasketButton extends Component {
     e.preventDefault();
   }
 
-  drop(e) {
-    this.setState((prevState) => (
-      {
-        products: ++prevState.products
-      }
-    ))
-    e.stopPropagation();
-    return false;
+  drop(addProduct) {
+    return (e) => {
+      let productId = e.dataTransfer.getData('product');
+      addProduct({ id: productId, number: 1 })();
+      e.stopPropagation();
+      return false;
+    };
   }
 
   render() {
     return (
       <basketContext.Consumer>
         {
-          ({ basket }) => (
+          ({ basket, addProduct }) => (
             <button
               className="btn-large waves-effect waves-light"
               onDragEnter={this.dragEnter}
-              onDrop={this.drop}
+              onDrop={this.drop(addProduct)}
               onDragOver={this.dragOver}
             >
-              Корзина {basket.reduce((sum, products) => sum + products.number, this.state.products)}
+              Корзина {basket.reduce((sum, products) => sum + products.number, 0)}
             </button>
           )
         }
