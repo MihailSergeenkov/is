@@ -22,7 +22,7 @@ class BasketButton extends Component {
   drop(addProduct) {
     return (e) => {
       let productId = e.dataTransfer.getData('product');
-      addProduct({ id: productId, number: 1 })();
+      addProduct({ id: productId, quantity: 1 })();
       e.stopPropagation();
       return false;
     };
@@ -39,7 +39,7 @@ class BasketButton extends Component {
               onDrop={this.drop(addProduct)}
               onDragOver={this.dragOver}
             >
-              Корзина {basket.reduce((sum, products) => sum + products.number, 0)}
+              Корзина {basket.reduce((sum, products) => sum + products.quantity, 0)}
             </button>
           )
         }

@@ -9,13 +9,13 @@ class ProductCard extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { productNumber: 1 };
+    this.state = { productQuantity: 1 };
     this.handleChange = this.handleChange.bind(this);
     this.dragStart = this.dragStart.bind(this);
   }
 
   handleChange(e) {
-    this.setState({ productNumber: +e.target.value });
+    this.setState({ productQuantity: +e.target.value });
   }
 
   dragStart(e) {
@@ -32,14 +32,14 @@ class ProductCard extends Component {
       <div className="card" draggable="true" onDragStart={this.dragStart}>
         <div className="card-image">
           <Image src={product['imageUrl']} width="150" height="250" alt={product['title']} />
-          <BuyButton productId={product['id']} productNumber={this.state.productNumber} />
+          <BuyButton productId={product['id']} productQuantity={this.state.productQuantity} />
         </div>
         <div className="card-content">
           <div className="card-title">
             <TextBox text={product['title']} />
           </div>
           <Price price={product['price']} />
-          <input type="number" id="productNumber"  placeholder="Укажите кол-во (по-умолчанию 1):" min="1" onChange={this.handleChange} />
+          <input type="number" placeholder="Укажите кол-во (по-умолчанию 1):" min="1" onChange={this.handleChange} />
         </div>
       </div>
     );
