@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Catalog from '~/src/Catalog';
+import Catalog from '~/src/components/views/Catalog/Catalog';
 import products from '~/constants/Products';
 import basketContext from '~/basketContext';
 

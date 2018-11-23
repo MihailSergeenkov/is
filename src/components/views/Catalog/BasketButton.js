@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import basketContext from '~/basketContext';
+import Link from '~/src/components/Link';
+import { mainPath, basketPath } from '~/src/helpers/routes';
 
 class BasketButton extends Component {
   constructor(props) {
@@ -33,14 +35,20 @@ class BasketButton extends Component {
       <basketContext.Consumer>
         {
           ({ basket, addProduct }) => (
-            <button
-              className="btn-large waves-effect waves-light"
-              onDragEnter={this.dragEnter}
-              onDrop={this.drop(addProduct)}
-              onDragOver={this.dragOver}
-            >
-              Корзина {basket.reduce((sum, products) => sum + products.quantity, 0)}
-            </button>
+            <Link
+              to={{
+                pathname: basketPath(),
+                state: { basket }
+              }}>
+              <button
+                className="btn-large waves-effect waves-light"
+                onDragEnter={this.dragEnter}
+                onDrop={this.drop(addProduct)}
+                onDragOver={this.dragOver}
+              >
+                Корзина {basket.reduce((sum, products) => sum + products.quantity, 0)}
+              </button>
+            </Link>
           )
         }
       </basketContext.Consumer>
