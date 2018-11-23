@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ProductCard from '~/src/ProductCard';
-import BasketButton from '~/src/BasketButton';
+import { withRouter } from 'react-router-dom';
+import ProductCard from '~/src/components/views/Catalog/ProductCard';
+import BasketButton from '~/src/components/views/Catalog/BasketButton';
 
 class Catalog extends Component {
   constructor(props) {
@@ -9,10 +10,13 @@ class Catalog extends Component {
   }
 
   render() {
-    const { products } = this.props;
+    const { products, location: { state } } = this.props;
+    const message = state && state.message;
 
     return (
       <div className="container">
+        { message && <div>{message}</div> }
+
         <BasketButton />
         <div className="row">
           {
@@ -34,4 +38,4 @@ Catalog.propTypes = {
   )
 };
 
-export default Catalog;
+export default withRouter(Catalog);
