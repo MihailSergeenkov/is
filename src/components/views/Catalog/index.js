@@ -27,7 +27,7 @@ class CatalogPage extends Component {
 
   render() {
     return (
-      <basketContext.Provider value={{ basket: this.state.basket, addProduct: this.addProduct }} >
+      <basketContext.Provider value={{ basket: this.state.basket, addProduct: this.addProduct }}>
         <Catalog products={this.state.products}/>
       </basketContext.Provider>
     );

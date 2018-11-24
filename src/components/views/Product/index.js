@@ -12,7 +12,7 @@ class ProductPage extends Component {
 
     return (
       <div>
-        <img src={product['imageUrl']} alt={product['title']} style={{ marginTop: '20px' }} width="100" heigth="100"/>
+        <img src={product['imageUrl']} alt={product['title']} style={{ marginTop: '20px' }} width="100" heigth="100" />
         <p>ID продукта: {id}</p>
         <p>Название продукта: {product['title']}</p>
         <p>Стоимость продукта: {product['price']} руб.</p>

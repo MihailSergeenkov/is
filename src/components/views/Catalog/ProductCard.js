@@ -4,6 +4,8 @@ import Image from '~/src/components/views/Catalog/Image';
 import TextBox from '~/src/components/views/Catalog/TextBox';
 import Price from '~/src/components/views/Catalog/Price';
 import BuyButton from '~/src/components/views/Catalog/BuyButton';
+import Link from '~/src/components/Link';
+import { productPath } from '~/src/helpers/routes';
 
 class ProductCard extends Component {
   constructor(props) {
@@ -36,7 +38,9 @@ class ProductCard extends Component {
         </div>
         <div className="card-content">
           <div className="card-title">
-            <TextBox text={product['title']} />
+            <Link to={productPath(product['id'])}>
+              <TextBox text={product['title']} />
+            </Link>
           </div>
           <Price price={product['price']} />
           <input type="number" placeholder="Укажите кол-во (по-умолчанию 1):" min="1" onChange={this.handleChange} />
