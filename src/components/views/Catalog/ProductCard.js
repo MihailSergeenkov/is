@@ -33,7 +33,7 @@ class ProductCard extends Component {
     return (
       <div className="card" draggable="true" onDragStart={this.dragStart}>
         <div className="card-image">
-          <Image src={product['imageUrl']} width="150" height="250" alt={product['title']} />
+          <Image src={product['imageUrls'][0]} width="150" height="250" alt={product['title']} />
           <BuyButton productId={product['id']} productQuantity={this.state.productQuantity} />
         </div>
         <div className="card-content">
@@ -55,7 +55,7 @@ ProductCard.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
-    imageUrl: PropTypes.string.isRequired
+    imageUrls: PropTypes.arrayOf(PropTypes.string).isRequired
   })
 };
 
