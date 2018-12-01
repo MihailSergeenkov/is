@@ -10,7 +10,7 @@ class Gallery extends Component {
 
   static getDerivedStateFromProps(props, state)  {
     if (!state.headImage) {
-      return { headImage: props.product['imageUrls'][0] };
+      return { headImage: props.product.headImage };
     }
     return false;
   }
