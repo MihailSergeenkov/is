@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import request from 'superagent';
 import Product from '~/src/components/views/Product/Product';
-
-const apiURL = 'https://cdn.contentful.com/spaces/hg3oyk3bbz3t/entries/';
-const accessToken = '6bd686df5791bb025edc0670eccfac2b65e6612713eae0e69421ca295f2802f1';
-
+import fetchProducts from '~/src/components/fetchProducts';
 
 class ProductPage extends Component {
   constructor(props) {
@@ -14,6 +10,7 @@ class ProductPage extends Component {
         id: null,
         title: null,
         price: null,
+        headImage: null,
         imageUrls: []
       }
     };
@@ -22,23 +19,22 @@ class ProductPage extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
 
-    request
-      .get(apiURL)
-      .query({
-        select: 'fields',
-        content_type: 'product',
-        'fields.id': id
+    fetchProducts(id).then((product) => (
+      this.setState({
+        product: {
+          ...product,
+          headImage: product['imageUrls'][0]
+        }
       })
-      .set('Authorization', `Bearer ${accessToken}`)
-      .then(({ body: { items: products } }) => (
-        this.setState({
-          product: products[0].fields
-        })
-      ));
+    ));
   }
 
   render() {
-    return <Product product={this.state.product} />;
+    return (
+      <Product
+        product={this.state.product}
+      />
+    );
   }
 }
 
