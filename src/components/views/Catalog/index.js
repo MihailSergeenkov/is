@@ -1,44 +1,41 @@
 import React, { Component } from 'react';
-import Catalog from '~/src/components/views/Catalog/Catalog';
-import basketContext from '~/basketContext';
-import fetchProducts from '~/src/components/fetchProducts';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import ProductCard from '~/src/components/views/Catalog/ProductCard';
+import BasketButton from '~/src/components/views/Catalog/BasketButton';
 
-class CatalogPage extends Component {
+class Catalog extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      products: [],
-      basket: []
-    };
-
-    this.addProduct = (product) => {
-      return () => {
-        this.setState((prevState) => ({
-          basket: [...prevState.basket, product]
-        }));
-      };
-    };
-  }
-
-  componentDidMount() {
-    fetchProducts().then((products) => (
-      this.setState({
-        products: products.map((product) => ({
-          ...product,
-          headImage: product['imageUrls'][0]
-        }))
-      })
-    ));
   }
 
   render() {
+    const { products, basket, addProduct, location: { state } } = this.props;
+    const message = state && state.message;
+
     return (
-      <basketContext.Provider value={{ basket: this.state.basket, addProduct: this.addProduct }}>
-        <Catalog products={this.state.products}/>
-      </basketContext.Provider>
+      <div className="container">
+        { message && <div>{message}</div> }
+
+        <BasketButton basket={basket} addProduct={addProduct} />
+        <div className="row">
+          {
+            products.map((product) => (
+              <div className="col s4" key={product['id']}>
+                <ProductCard product={product} addProduct={addProduct} />
+              </div>
+            ))
+          }
+        </div>
+      </div>
     );
   }
 }
 
-export default CatalogPage;
+Catalog.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape(ProductCard.propTypes)
+  )
+};
+
+export default withRouter(Catalog);
