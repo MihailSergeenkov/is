@@ -28,13 +28,13 @@ class ProductCard extends Component {
   }
 
   render() {
-    const { product } = this.props;
+    const { product, addProduct } = this.props;
 
     return (
       <div className="card" draggable="true" onDragStart={this.dragStart}>
         <div className="card-image">
           <Image src={product['imageUrls'][0]} width="150" height="250" alt={product['title']} />
-          <BuyButton productId={product['id']} productQuantity={this.state.productQuantity} />
+          <BuyButton productId={product['id']} productQuantity={this.state.productQuantity} addProduct={addProduct} />
         </div>
         <div className="card-content">
           <div className="card-title">

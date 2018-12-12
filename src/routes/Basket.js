@@ -1,7 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { mainPath, basketPath } from '~/src/helpers/routes';
-import BasketPage from '~/src/components/views/Basket';
+import BasketContainer from '~/src/containers/BasketContainer';
+import { fetchProducts } from '~/src/actions/Products';
 
 export default {
   path: basketPath(),
@@ -12,7 +13,10 @@ export default {
         state: { message: 'Корзина пуста, добавьте продукт в корзину!' }
       }} />
     ) : (
-      <BasketPage {...props}/>
+      <BasketContainer />
     )
-  )
+  ),
+  prepareData: (store) => {
+    store.dispatch(fetchProducts());
+  }
 };

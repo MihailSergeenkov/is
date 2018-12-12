@@ -4,21 +4,15 @@ import basketContext from '~/basketContext';
 
 class BuyButton extends Component {
   render() {
-    const { productId, productQuantity } = this.props;
+    const { productId, productQuantity, addProduct } = this.props;
 
     return (
-      <basketContext.Consumer>
-        {
-          ({ addProduct }) => (
-            <button
-              className="btn-floating halfway-fab waves-effect waves-light red"
-              onClick={addProduct({ id: productId, quantity: productQuantity })}
-            >
-              <i className="material-icons">add</i>
-            </button>
-          )
-        }
-      </basketContext.Consumer>
+      <button
+        className="btn-floating halfway-fab waves-effect waves-light red"
+        onClick={() => addProduct({ id: productId, quantity: productQuantity })}
+      >
+        <i className="material-icons">add</i>
+      </button>
     );
   }
 }
@@ -31,6 +25,5 @@ BuyButton.propTypes = {
 BuyButton.defaultProps = {
   productQuantity: 1
 };
-
 
 export default BuyButton;

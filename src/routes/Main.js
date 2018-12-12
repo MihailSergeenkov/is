@@ -1,9 +1,13 @@
 import { mainPath } from '~/src/helpers/routes';
-import CatalogPage from '~/src/components/views/Catalog';
+import ProductsContainer from '~/src/containers/ProductsContainer';
+import { fetchProducts } from '~/src/actions/Products';
 
 export default {
   path: mainPath(),
   exact: true,
   strict: true,
-  component: CatalogPage
+  component: ProductsContainer,
+  prepareData: (store) => {
+    store.dispatch(fetchProducts());
+  }
 };

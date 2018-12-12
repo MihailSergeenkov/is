@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import products from '~/constants/Products';
+import { connect } from 'react-redux';
 
-class BasketPage extends Component {
+class Basket extends Component {
   getProduct(purchase) {
-    return products.find(product => product['id'] == purchase['id'])
+    return this.props.products.find(product => product['id'] == purchase['id'])
   }
 
   render() {
-    const { basket } = this.props.location.state;
+    const { basket } = this.props;
 
     return (
       <ul className="collection">
@@ -16,7 +16,7 @@ class BasketPage extends Component {
             const product = this.getProduct(purchase);
             return (
               <li key={purchase['id']} className="collection-item avatar">
-                <img src={product['imageUrl']} alt={product['title']} className="circle" />
+                <img src={product['headImage']} alt={product['title']} className="circle" />
                 <span className="title">{product['title']}</span>
                 <p>{purchase['quantity']}</p>
               </li>
@@ -28,4 +28,11 @@ class BasketPage extends Component {
   }
 }
 
-export default BasketPage;
+const stateToProps = (state) => ({
+  products: state.products.entries,
+  basket: state.basket.entries,
+  isFetching: state.products.isFetching,
+  error: state.products.error
+});
+
+export default connect(stateToProps)(Basket);
