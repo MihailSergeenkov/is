@@ -29,5 +29,8 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "superagent": "^4.0.0"
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.7"
   }
 }

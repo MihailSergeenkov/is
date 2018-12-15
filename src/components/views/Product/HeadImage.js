@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class HeadImage extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { image } = this.props;
 
