@@ -4,19 +4,36 @@ import HeadImage from '~/src/components/views/Product/HeadImage';
 class Gallery extends Component {
   constructor(props) {
     super(props);
-    this.state = { headImage: null };
+
+    this.state = {
+      headImage: {
+        image: null,
+        from: 'props'
+      }
+    };
+
     this.handleClick = this.handleClick.bind(this);
   }
 
   static getDerivedStateFromProps(props, state)  {
-    if (!state.headImage) {
-      return { headImage: props.product.headImage };
+    if (state.headImage.from == 'props') {
+      return {
+        headImage: {
+          image: props.product.headImage,
+          from: 'props'
+        }
+      };
     }
     return false;
   }
 
   handleClick(e) {
-    this.setState({ headImage: e.target.src });
+    this.setState({
+      headImage: {
+        image: e.target.src,
+        from: 'user'
+      }
+    });
   }
 
   render() {
@@ -24,7 +41,7 @@ class Gallery extends Component {
 
     return (
       <div>
-        <HeadImage image={this.state.headImage} />
+        <HeadImage image={this.state.headImage.image} />
         {
           product['imageUrls'].map((image) =>(
             <img
