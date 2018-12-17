@@ -14,7 +14,15 @@ export default function(state = initialState, action) {
     case types.FETCH_PRODUCTS_FAILURE:
       return assign({}, state, { error: true });
     case types.FETCH_PRODUCTS_SUCCESS:
-      return assign({}, state, { entries: action.response });
+      return assign({}, state, {
+        entries: action.response.map((product) => {
+            const item = product.fields;
+             return {
+              ...item,
+              headImage: item['imageUrls'][0]
+            };
+          }) 
+      });
     default:
       return state;
   }
