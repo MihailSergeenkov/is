@@ -27,22 +27,9 @@ export default (store) => (next) => (action) => {
   const promise = APICall(action[API_CALL].id);
 
   promise.then(
-    (response) => {
-      let result = response.map((product) => {
-        const item = product.fields;
-        return {
-          ...item,
-          headImage: item['imageUrls'][0]
-        };
-      });
-
-      next(
-        nextAction(action, {
-          response: action[API_CALL].id ? result[0] : result,
-          type: successType
-        })
-      );
-    },
+    (response) => next(
+      nextAction(action, { response, type: successType })
+    ),
     (error) => next(
       nextAction(action, { error, type: failureType })
     )

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadState } from '~/src/helpers/persistenceHelper';
 
 class Basket extends Component {
   getProduct(purchase) {
@@ -8,7 +7,7 @@ class Basket extends Component {
   }
 
   render() {
-    const basket = loadState();
+    const { basket } = this.props;
 
     return (
       <ul className="collection">
@@ -31,6 +30,7 @@ class Basket extends Component {
 
 const stateToProps = (state) => ({
   products: state.products.entries,
+  basket: state.basket.entries,
   isFetching: state.products.isFetching,
   error: state.products.error
 });
