@@ -1,38 +1,50 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { reduxForm } from 'redux-form';
+import BasketPage from '~/src/components/views/Basket';
+import * as types from '~/src/constants/actionTypes/BasketActionTypes';
 
-class Basket extends Component {
-  getProduct(purchase) {
-    return this.props.products.find(product => product['id'] == purchase['id'])
+const onSubmit = (values, dispatch) => {
+  dispatch({
+    type: types.CLEAR_BASKET
+  });
+  console.log(JSON.stringify(values));
+};
+
+const validate = (values) => {
+  const errors = {};
+
+  if (values.fullName && values.fullName.length < 5) {
+    errors.fullName = 'Короткое ФИО, необходимо ввести более 5 символов!'
   }
 
-  render() {
-    const { basket } = this.props;
-
-    return (
-      <ul className="collection">
-        {
-          basket.map((purchase) => {
-            const product = this.getProduct(purchase);
-            return (
-              <li key={purchase['id']} className="collection-item avatar">
-                <img src={product['headImage']} alt={product['title']} className="circle" />
-                <span className="title">{product['title']}</span>
-                <p>{purchase['quantity']}</p>
-              </li>
-            );
-          })
-        }
-      </ul>
-    );
+  if (values.phone && values.phone.length < 11) {
+    errors.phone = 'Необходимо ввести телефон полностью!'
   }
-}
+
+  if (values.email && values.email.length < 5) {
+    errors.email = 'Короткий электронный адрес, необходимо ввести более 5 символов!'
+  }
+
+  if (values.home && values.home.length < 5) {
+    errors.home = 'Короткий адрес доставки, необходимо ввести более 5 символов!'
+  }
+
+  return errors;
+};
 
 const stateToProps = (state) => ({
   products: state.products.entries,
   basket: state.basket.entries,
   isFetching: state.products.isFetching,
-  error: state.products.error
+  error: state.products.error,
+  initialValues: {
+    basket: state.basket.entries
+  }
 });
 
-export default connect(stateToProps)(Basket);
+export default connect(stateToProps)(reduxForm({
+  form: 'orderForm',
+  validate,
+  onSubmit: (values, dispatch) => onSubmit(values, dispatch)
+})(BasketPage));
