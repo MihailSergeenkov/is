@@ -1,6 +1,6 @@
-import store from '~/src/store'
-import { saveState } from '~/src/helpers/persistenceHelper';
-import * as types from '~/src/constants/actionTypes/BasketActionTypes';
+import store from '../store'
+import { saveState } from '../helpers/persistenceHelper';
+import * as types from '../constants/actionTypes/BasketActionTypes';
 
 const addBasketToLS = (store) => (next) => (action) => {
   next(action);

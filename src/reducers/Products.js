@@ -1,5 +1,5 @@
 import { assign } from 'lodash/object';
-import * as types from '~/src/constants/actionTypes/ProductsActionTypes';
+import * as types from '../constants/actionTypes/ProductsActionTypes';
 
 const initialState = {
   isFetching: false,
@@ -21,7 +21,7 @@ export default function(state = initialState, action) {
               ...item,
               headImage: item['imageUrls'][0]
             };
-          }) 
+          })
       });
     default:
       return state;

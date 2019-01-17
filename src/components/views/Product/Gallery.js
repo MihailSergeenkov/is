@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import HeadImage from '~/src/components/views/Product/HeadImage';
+import HeadImage from './HeadImage';
 
 class Gallery extends Component {
   constructor(props) {

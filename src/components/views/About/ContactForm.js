@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { set, assign } from 'lodash/object';
-import Text from '~/src/components/views/About/Text';
-import TextArea from '~/src/components/views/About/TextArea';
+import Text from './Text';
+import TextArea from './TextArea';
 
 class ContactForm extends Component {
   constructor(props) {

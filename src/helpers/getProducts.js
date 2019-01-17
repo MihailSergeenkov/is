@@ -1,5 +1,5 @@
 import request from 'superagent';
-import { apiURL, accessToken } from '~/src/constants/API';
+import { apiURL, accessToken } from '../constants/API';
 
 const getProducts = (id = null) => {
   let query = {

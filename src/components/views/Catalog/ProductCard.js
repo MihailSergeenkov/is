@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Image from '~/src/components/views/Catalog/Image';
-import TextBox from '~/src/components/views/Catalog/TextBox';
-import Price from '~/src/components/views/Catalog/Price';
-import BuyButton from '~/src/components/views/Catalog/BuyButton';
-import Link from '~/src/components/Link';
-import { productPath } from '~/src/helpers/routes';
+import Image from './Image';
+import TextBox from './TextBox';
+import Price from './Price';
+import BuyButton from './BuyButton';
+import Link from '../../Link';
+import { productPath } from '../../../helpers/routes';
 
 class ProductCard extends Component {
   constructor(props) {

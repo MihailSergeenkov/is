@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import basketContext from '~/basketContext';
 
 class BuyButton extends Component {
   render() {

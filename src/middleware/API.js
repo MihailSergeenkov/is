@@ -1,7 +1,7 @@
 import request from 'superagent';
 import { assign } from 'lodash/object';
 import { stringify } from 'qs';
-import getProducts from '~/src/helpers/getProducts';
+import getProducts from '../helpers/getProducts';
 
 function APICall(id) {
   return new Promise((resolve, reject) => {
