@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- helmet.title.toString() %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="<%- manifest['main.css'] %>" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app"><%- content %></div>
+    <script type="text/javascript">window.INITIAL_STATE = <%- initialState %>;</script>
+    <script type="text/javascript" src="<%- manifest['main.js'] %>"></script>
+  </body>
+</html>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import basketContext from '~/basketContext';
-import Link from '~/src/components/Link';
-import { mainPath, basketPath } from '~/src/helpers/routes';
+import Link from '../../Link';
+import { mainPath, basketPath } from '../../../helpers/routes';
 
 class BasketButton extends Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import classNames from 'classnames';
-import RenderField from '~/src/components/views/Basket/RenderField';
+import RenderField from './RenderField';
 
 class OrderForm extends Component {
   render() {

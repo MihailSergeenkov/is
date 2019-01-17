@@ -1,4 +1,4 @@
-import * as types from '~/src/constants/actionTypes/BasketActionTypes';
+import * as types from '../constants/actionTypes/BasketActionTypes';
 
 const addProductToBasket = (response) => ({
   type: types.ADD_PRODUCT_SUCCESS,

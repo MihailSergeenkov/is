@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import ProductCard from '~/src/components/views/Catalog/ProductCard';
-import BasketButton from '~/src/components/views/Catalog/BasketButton';
+import Helmet from 'react-helmet';
+import ProductCard from './ProductCard';
+import BasketButton from './BasketButton';
 
 class Catalog extends Component {
   constructor(props) {
@@ -15,6 +16,9 @@ class Catalog extends Component {
 
     return (
       <div className="container">
+        <Helmet>
+          <title>Продукты</title>
+        </Helmet>
         { message && <div>{message}</div> }
 
         <BasketButton basket={basket} addProduct={addProduct} />

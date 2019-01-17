@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import BasketPage from '~/src/components/views/Basket';
-import * as types from '~/src/constants/actionTypes/BasketActionTypes';
+import BasketPage from '../components/views/Basket';
+import * as types from '../constants/actionTypes/BasketActionTypes';
 
 const onSubmit = (values, dispatch) => {
   dispatch({

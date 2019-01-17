@@ -1,6 +1,6 @@
-import { productPath } from '~/src/helpers/routes';
-import ProductContainer from '~/src/containers/ProductContainer';
-import { fetchProduct } from '~/src/actions/Product';
+import { productPath } from '../helpers/routes';
+import ProductContainer from '../containers/ProductContainer';
+import { fetchProduct } from '../actions/Product';
 
 export default {
   path: productPath(),

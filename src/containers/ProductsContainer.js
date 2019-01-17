@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Catalog from '~/src/components/views/Catalog';
-import { addProduct } from '~/src/actions/Basket';
+import Catalog from '../components/views/Catalog';
+import { addProduct } from '../actions/Basket';
 
 class Products extends Component {
   constructor(props) {

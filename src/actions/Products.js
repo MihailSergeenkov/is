@@ -1,5 +1,5 @@
-import * as types from '~/src/constants/actionTypes/ProductsActionTypes';
-import { API_CALL } from '~/src/middleware/API';
+import * as types from '../constants/actionTypes/ProductsActionTypes';
+import { API_CALL } from '../middleware/API';
 
 export function fetchProducts() {
   return {

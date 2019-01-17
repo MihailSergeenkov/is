@@ -1,5 +1,5 @@
 import { assign } from 'lodash/object';
-import * as types from '~/src/constants/actionTypes/BasketActionTypes';
+import * as types from '../constants/actionTypes/BasketActionTypes';
 
 const initialState = {
   entries: []

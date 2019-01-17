@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { mainPath, basketPath } from '~/src/helpers/routes';
-import BasketContainer from '~/src/containers/BasketContainer';
-import { fetchProducts } from '~/src/actions/Products';
+import { mainPath, basketPath } from '../helpers/routes';
+import BasketContainer from '../containers/BasketContainer';
+import { fetchProducts } from '../actions/Products';
 
 export default {
   path: basketPath(),

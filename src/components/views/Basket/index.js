@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import OrderForm from '~/src/components/views/Basket/OrderForm';
+import Helmet from 'react-helmet';
+import OrderForm from './OrderForm';
 
 class BasketPage extends Component {
   getProduct(purchase) {
@@ -11,6 +12,9 @@ class BasketPage extends Component {
 
     return (
       <div>
+        <Helmet>
+          <title>Корзина</title>
+        </Helmet>
         <h5>Ваш заказ:</h5>
         <ul className="collection">
           {

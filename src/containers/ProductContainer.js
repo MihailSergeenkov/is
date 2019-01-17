@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ProductPage from '~/src/components/views/Product';
+import ProductPage from '../components/views/Product';
 
 const stateToProps = (state) => ({
   product: state.product.entry,
